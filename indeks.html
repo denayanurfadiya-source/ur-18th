@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday</title>
+
+<!-- Romantic Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        background: linear-gradient(skyblue, #a8e6ff);
+        font-family: 'Quicksand', sans-serif;
+        overflow-x: hidden;
+    }
+
+    /* ===========================
+       SPLASH SCREEN
+    ============================ */
+    #splash {
+        position: fixed;
+        width: 100%; height: 100%;
+        top: 0; left: 0;
+        background: linear-gradient(skyblue, #a8e6ff);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        cursor: pointer;
+        z-index: 9999;
+    }
+    #splash h1 {
+        font-family: 'Parisienne', cursive;
+        font-size: 100px;
+        color: #fff;
+        text-shadow: 0 0 30px #ffffffaa;
+        animation: pulse 2s infinite alternate;
+    }
+    @keyframes pulse {
+        from { transform: scale(1); opacity: 0.9; }
+        to   { transform: scale(1.05); opacity: 1; }
+    }
+
+    /* ===========================
+       MAIN CONTENT
+    ============================ */
+    #mainContent { display: none; }
+
+    h1 {
+        font-family: 'Parisienne', cursive;
+        font-size: 80px;
+        text-align: center;
+        color: #fff;
+        text-shadow: 0 0 25px #ffffff;
+        margin-top: 40px;
+    }
+
+    /* COUNTDOWN NEON */
+    #countdown {
+        font-size: 32px;
+        text-align: center;
+        color: #fff;
+        margin-top: -10px;
+        text-shadow:
+            0 0 10px #fff,
+            0 0 25px #00eaff,
+            0 0 60px #00eaff;
+        animation: glowPulse 2.5s ease-in-out infinite alternate;
+    }
+    @keyframes glowPulse {
+        from { text-shadow: 0 0 10px #fff, 0 0 20px #00eaff; }
+        to   { text-shadow: 0 0 20px #fff, 0 0 50px #00eaff; }
+    }
+
+    /* ===========================
+       BLUR IMAGE (HOVER REVEAL)
+    ============================ */
+    .image-container {
+        width: 80%;
+        margin: 60px auto;
+        text-align: center;
+    }
+
+    .blur-image {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        border-radius: 20px;
+        filter: blur(12px) brightness(0.7);
+        transition: 1s ease;
+        box-shadow: 0 0 25px #fff;
+    }
+    .blur-image:hover {
+        filter: blur(0px) brightness(1);
+    }
+
+    /* ===========================
+       SECRET MESSAGE
+    ============================ */
+    .secret-text {
+        margin: 100px auto;
+        width: 80%;
+        text-align: center;
+        font-size: 26px;
+        color: white;
+        filter: blur(12px);
+        transition: 1s ease;
+    }
+    .reveal-btn {
+        display: block;
+        margin: auto;
+        padding: 15px 30px;
+        border: none;
+        background: #ffffffcc;
+        border-radius: 20px;
+        font-size: 20px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    /* ===========================
+       IMAGE UPLOAD
+    ============================ */
+    .img-section {
+        margin: 80px auto;
+        width: 80%;
+        text-align: center;
+        color: #fff;
+        font-size: 22px;
+    }
+    #previewImage {
+        margin-top: 20px;
+        max-width: 80%;
+        border-radius: 20px;
+        box-shadow: 0 0 20px #fff;
+    }
+
+    .gdrive-btn {
+        padding: 15px 30px;
+        margin-top: 20px;
+        border: none;
+        background: #ffffffdd;
+        border-radius: 20px;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    /* ===========================
+       CRYSTAL SPARKLES
+    ============================ */
+    .crystal {
+        position: fixed;
+        top: -10px;
+        width: 8px; height: 8px;
+        background: white;
+        border-radius: 50%;
+        box-shadow: 0 0 10px white, 0 0 20px white;
+        animation: fall 5s linear infinite, twinkle 1.5s infinite alternate;
+        opacity: 0.8;
+    }
+
+    @keyframes fall {
+        to {
+            transform: translateY(110vh);
+            opacity: 0;
+        }
+    }
+    @keyframes twinkle {
+        from { opacity: 0.3; }
+        to   { opacity: 1; }
+    }
+
+   .cute-gdrive-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 35px;
+    margin-top: 25px;
+    background: #86d1ff;
+    color: white;
+    border-radius: 40px;
+    font-size: 20px;
+    font-family: "Fredoka One", "Quicksand", sans-serif;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 0 15px rgba(255,255,255,0.8), 
+                0 0 25px rgba(134,209,255,0.9);
+    transition: 0.25s ease;
+    border: 3px solid rgba(255,255,255,0.6);
+}
+
+.cute-gdrive-btn:hover {
+    transform: scale(1.12);
+    background: #a3e0ff;
+    box-shadow: 0 0 20px white, 
+                0 0 35px #bdeaff, 
+                0 0 50px #dff6ff;
+}
+
+.cute-gdrive-btn:active {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #ffffff, 
+                0 0 18px #bdeaff;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<!-- ===========================
+     SPLASH SCREEN
+=========================== -->
+<div id="splash">
+    <h1>Happy Birthday</h1>
+    <p style="color:white;">Tap to continue...</p>
+</div>
+
+<!-- ===========================
+     MAIN CONTENT
+=========================== -->
+<div id="mainContent">
+
+    <h1>Happy Birthday⸜(｡˃ ᵕ ˂ )⸝♡</h1>
+    <div id="countdown"></div>
+
+    <!-- IMAGE HOVER REVEAL -->
+    <div class="image-container">
+        <img src="c:\Users\Lenovo\Downloads\Loopy1.jpg" class="blur-image">
+    </div>
+
+    <!-- SECRET MESSAGE -->
+    <div id="secretMessage" class="secret-text">
+        You are a gentle warmth in a cold world,  
+        a soft light in the darkest nights.  
+        Thank you for existing.
+    </div>
+    <button class="reveal-btn" onclick="revealText()">clickkk -`♡´-</button>
+
+    <!-- IMAGE UPLOAD -->
+     <div class="image-container">
+        <img src="c:\Users\Lenovo\Downloads\Loopy1.jpg" class="blur-image">
+    </div>
+
+    <a href="https://drive.google.com/YOUR_LINK_HERE"
+   target="_blank"
+   class="cute-gdrive-btn">
+   Click Heree!
+    </a>
+
+</div>
+
+<!-- BACKGROUND MUSIC -->
+<audio id="bgMusic" src="Walking Back Home.mp3" autoplay loop></audio>
+
+<script>
+/* ===========================
+   SPLASH SCREEN → SHOW MAIN
+=========================== */
+document.getElementById("splash").onclick = () => {
+    document.getElementById("splash").style.display = "none";
+    document.getElementById("mainContent").style.display = "block";
+    document.getElementById("bgMusic").play();
+};
+
+/* ===========================
+   COUNTDOWN (22 NOV 2025)
+=========================== */
+function updateCountdown() {
+    const target = new Date("November 22, 2025 00:00:00").getTime();
+    const now = Date.now();
+    const diff = target - now;
+
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const m = Math.floor((diff / (1000 * 60)) % 60);
+    const s = Math.floor((diff / 1000) % 60);
+
+    document.getElementById("countdown").innerText = `${d}d ${h}h ${m}m ${s}s`;
+}
+setInterval(updateCountdown, 1000);
+
+/* ===========================
+   REVEAL TEXT
+=========================== */
+function revealText() {
+    document.getElementById("secretMessage").style.filter = "blur(0px)";
+}
+
+/* ===========================
+   IMAGE UPLOAD
+=========================== */
+document.getElementById("imageInput").onchange = function() {
+    const f = this.files[0];
+    if (f) {
+        document.getElementById("previewImage").src = URL.createObjectURL(f);
+    }
+};
+
+/* ===========================
+   CRYSTAL SPARKLES
+=========================== */
+function createCrystal() {
+    const c = document.createElement("div");
+    c.classList.add("crystal");
+    c.style.left = Math.random() * 100 + "vw";
+    c.style.animationDuration = 4 + Math.random()*3 + "s";
+    document.body.appendChild(c);
+
+    setTimeout(() => c.remove(), 7000);
+}
+setInterval(createCrystal, 200);
+</script>
+
+</body>
+</html>
